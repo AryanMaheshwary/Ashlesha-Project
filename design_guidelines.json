@@ -1,0 +1,148 @@
+{
+  "project_name": "Pharmacy Management System",
+  "app_type": "dashboard",
+  "theme_and_archetype": {
+    "mode": "light_with_dark_sidebar_option",
+    "archetype": "Clinical Precision & Health Trust",
+    "emotional_tone": "Authoritative, ultra-clean, precise, safety-focused, frictionless operations",
+    "prohibited_colors": ["#1B93A4", "#7351B7"],
+    "prohibited_fonts": ["Space Grotesk"]
+  },
+  "typography": {
+    "heading_font": "Outfit, sans-serif",
+    "body_font": "IBM Plex Sans, sans-serif",
+    "mono_font": "JetBrains Mono, monospace",
+    "google_fonts_import": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap",
+    "scale": {
+      "h1_hero": "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight",
+      "h2_section": "text-2xl sm:text-3xl font-bold tracking-tight",
+      "h3_card": "text-lg sm:text-xl font-semibold tracking-normal",
+      "body": "text-sm sm:text-base font-normal leading-relaxed",
+      "label_overline": "text-xs font-semibold uppercase tracking-wider text-slate-500",
+      "mono_data": "font-mono text-xs sm:text-sm font-medium tracking-tight"
+    }
+  },
+  "colors": {
+    "background": {
+      "default": "#F8FAFC",
+      "surface": "#FFFFFF",
+      "surface_subtle": "#F1F5F9",
+      "sidebar": "#0F172A",
+      "sidebar_active": "#1E293B"
+    },
+    "text": {
+      "primary": "#0F172A",
+      "secondary": "#475569",
+      "muted": "#64748B",
+      "inverse": "#F8FAFC"
+    },
+    "brand_and_accents": {
+      "primary": "#0D9488",
+      "primary_hover": "#0F766E",
+      "primary_light": "#CCFBF1",
+      "emerald_health": "#059669",
+      "emerald_light": "#D1FAE5",
+      "sky_accent": "#0284C7"
+    },
+    "status": {
+      "low_stock_warning": "#D97706",
+      "low_stock_bg": "#FEF3C7",
+      "expiry_alert_critical": "#DC2626",
+      "expiry_alert_bg": "#FEE2E2",
+      "fifo_success": "#16A34A",
+      "fifo_bg": "#DCFCE7"
+    },
+    "borders": {
+      "default": "border-slate-200",
+      "subtle": "border-slate-100",
+      "active": "border-teal-500"
+    }
+  },
+  "layout_and_spacing": {
+    "grid_mode": "High Density Grid (MODE B)",
+    "container_padding": "px-4 py-6 sm:px-8 sm:py-8",
+    "card_padding": "p-5 sm:p-6",
+    "gap_density": "gap-4 sm:gap-6",
+    "sidebar_width": "w-64",
+    "border_radius": "rounded-lg (0.5rem)"
+  },
+  "components_and_features": {
+    "role_based_access": {
+      "roles": ["Admin", "Pharmacist", "Cashier"],
+      "ui_badge_style": "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold shadow-sm",
+      "admin_badge": "bg-purple-100 text-purple-800 border border-purple-200",
+      "pharmacist_badge": "bg-teal-100 text-teal-800 border border-teal-200",
+      "cashier_badge": "bg-blue-100 text-blue-800 border border-blue-200"
+    },
+    "billing_and_pos": {
+      "layout": "2-column layout: Left 60% Medicine Catalog/Search, Right 40% Cart & Invoice Builder",
+      "fifo_badge": "Display batch number, expiry date (sorted ascending by expiry for auto FIFO deduction), and available batch qty",
+      "quick_cart_table": "Dense table layout with instant increment/decrement, subtotal, GST/discount calculation, prescription link search input, and Print Invoice action"
+    },
+    "inventory_and_batch_management": {
+      "table_style": "Clean data table with sticky header, search/filter bar by medicine name/category/supplier, sort by stock level, and expandable row for batch breakdown",
+      "add_medicine_modal": "Shadcn Dialog with tabbed form for basic details, reorder threshold, unit price, and opening batch details"
+    },
+    "reports_dashboard": {
+      "summary_cards": "4 metric widgets (Daily Revenue, Monthly Sales, Low Stock Items count, Expiring within 30 days count)",
+      "charts": "Recharts / Shadcn charts for Monthly Revenue Trends (AreaChart/BarChart) and Top-Selling Medicines (Horizontal BarChart)",
+      "alerts_tabs": "Tabbed table switching between Low Stock Alerts (< Reorder Threshold) and Expiry Alerts (<= 30 Days)"
+    }
+  },
+  "media": {
+    "image_urls": [
+      {
+        "category": "hero_login_bg",
+        "url": "https://images.pexels.com/photos/19471015/pexels-photo-19471015.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Female pharmacist in a lab coat in pharmacy store"
+      },
+      {
+        "category": "medicine_stock_showcase",
+        "url": "https://images.pexels.com/photos/7230183/pexels-photo-7230183.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Assorted pills and capsules for pharmacy catalog"
+      },
+      {
+        "category": "lab_quality_assurance",
+        "url": "https://images.pexels.com/photos/4047055/pexels-photo-4047055.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Gloved hand holding sample pills in clean healthcare setting"
+      }
+    ]
+  },
+  "component_path_mapping": {
+    "ui_primitives": "/app/frontend/src/components/ui",
+    "file_extension": ".jsx / .js",
+    "available_shadcn_components": [
+      "table",
+      "tabs",
+      "dialog",
+      "select",
+      "dropdown-menu",
+      "command",
+      "badge",
+      "alert",
+      "card",
+      "button",
+      "input",
+      "calendar",
+      "popover",
+      "toast",
+      "sonner"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "You are building React components using .js/.jsx syntax located in /app/frontend/src.",
+    "Ensure every interactive element (button, link, input, tab, select, modal trigger) and metric text includes a clear data-testid attribute in kebab-case (e.g. data-testid='login-submit-button', data-testid='medicine-search-input', data-testid='low-stock-count').",
+    "Maintain strict non-transparent backgrounds on all overlays, dropdowns, sticky headers, and popovers (e.g., bg-white shadow-lg border border-slate-200). Never rely on fully transparent surfaces.",
+    "Implement the strict role switcher on top header or login screen allowing seamless evaluation of Admin, Pharmacist, and Cashier views.",
+    "For billing/sale FIFO logic: automatically select stock from the batch with the nearest expiry date first and visually highlight the assigned batch ID with a FIFO badge.",
+    "Include high contrast colors for critical medical alerts: Red for <=30 day expiry alert, Amber for low stock alert, Green for in-stock and completed sale.",
+    "Integrate Sonner toasts (located at /app/frontend/src/components/ui/sonner.jsx) for feedback on invoice generation, medicine creation, stock batch updates, and error states."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Avoid generic centered layouts or unstyled default tables. Use styled Shadcn tables with clean borders and hover highlights.",
+    "Do not use transparent background in headers, dropdowns, or modals.",
+    "Use specific CSS transitions (e.g. transition: background-color 0.2s ease, border-color 0.2s ease). Avoid transition: all.",
+    "Never use AI assistant emoji characters (🤖, 🧠, 💡, 🔮) as system icons; use Lucide React icons instead.",
+    "Use 2-3x generous spacing inside cards (p-5 or p-6) to avoid cramped data presentation."
+  ]
+}
