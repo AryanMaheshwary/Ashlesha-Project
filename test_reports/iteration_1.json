@@ -1,0 +1,34 @@
+{
+  "summary": "Backend: 24/24 pytest passed (auth, RBAC, medicines CRUD, suppliers/customers, purchases + past-expiry rejection, sales FIFO with batch numbers, Rx-block 422, insufficient-stock 409, Rx-linked sale, reports, sales history). Frontend: verified all 3 role logins with correct redirects (admin/pharma -> /dashboard, cashier -> /billing), RBAC nav hiding for cashier, Inventory renders, Billing add-to-cart + total + checkout + invoice modal with FIFO batch numbers works, Reports Dashboard shows 4 metric cards + revenue trend + top-selling + low-stock/expiring tabs.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Global (Billing, all Select dropdowns)", "issues": ["React hydration warning: <span> cannot be a child of <option>. The shared Select component / editor instrumentation wraps option text in a span. Only a console warning, no functional impact, but should be cleaned up."]},
+      {"screen": "Sidebar nav testids", "issues": ["Review-request expected testids nav-purchases/nav-sales/nav-reports but actual UI uses labels 'Stock Entry' and 'Sales History' (and Dashboard is the reports page). Nav items themselves work; only the testid naming diverges from the spec. Confirm testid convention (e.g. nav-stock-entry, nav-sales-history) is intentional."]}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/backend_test.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "(Optional cleanup) Remove the <span> wrapper inside <option> in the common Select component to eliminate React hydration warning.",
+    "(Optional) Align sidebar nav data-testids with the spec (nav-purchases, nav-sales, nav-reports) or update the spec to match current testids."
+  ],
+  "critical_code_review_comments": [
+    "Rx-block/insufficient-stock/past-expiry business rules are all correctly enforced server-side inside SaleService/StockService — verified via API tests.",
+    "Purchase endpoint payload uses `items` array (not `lines`) and Medicine uses `unitPrice` (not `price`). Frontend already matches; only tests needed to be aligned.",
+    "Report route is `/api/reports/expiry` (not `/expiring`) — frontend uses correct path.",
+    "MedicineList response uses `totalAvailable` for stock — consistent across list, list-search, and after purchase increment."
+  ],
+  "updated_files": ["/app/backend/tests/backend_test.py"],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "admin/admin123 (ADMIN), pharma/pharma123 (PHARMACIST), cashier/cashier123 (CASHIER). Bearer token in localStorage['pms_token'].",
+  "seed_data_creation": "Tests create TEST_-prefixed medicines/suppliers/customers and delete them (except when referenced). One TEST_B1 batch is left attached to the first medicine (used by increment-verification test); harmless.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend field names: Medicine -> unitPrice + totalAvailable + prescriptionRequired + lowStockThreshold. Purchase payload -> {supplierId, items:[{medicineId,batchNo,expiryDate,quantity,costPrice}]}. Sale payload -> {prescriptionId?, customerId?, paymentMode(CASH|CARD|UPI), items:[{medicineId,quantity}]}. Report routes: /api/reports/{summary,low-stock,expiry,revenue?period=daily|monthly,top-selling}. Login returns {token,user{role}} — send Bearer. Rx-without-prescription returns 422; insufficient stock returns 409; past expiry on purchase returns 400.",
+  "rca of the issue": "No functional bugs found. Only cosmetic React hydration console warning caused by editor/instrumentation wrapping option text in <span>."
+}
